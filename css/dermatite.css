@@ -2,12 +2,12 @@
    RESET E VARIÁVEIS
 =========================== */
 :root {
-  --primary: #f7882f; /*topo do site */
-  --accent: #f7882f; /*botão de inicio */
-  --light-bg: #f9f9f9; /*background do site */
-  --dark-bg: #121212; 
-  --text-color: #333;   /*Cores do card (PET DICAS) */
-  --text-muted: #6b7a8f; /*Cores do card (PET DICAS) */
+  --primary: #f7882f;
+  --accent: #f7882f;
+  --light-bg: #f9f9f9;
+  --dark-bg: #121212;
+  --text-color: #333;
+  --text-muted: #6b7a8f;
   --card-bg: #fff;
   --navbar-bg: #f1f1f1;
   --header-bg: #fff;
@@ -15,6 +15,7 @@
   --dropdown-bg: #fff;
   --dropdown-border: #ddd;
   --transition: 0.3s ease;
+  --h1-container:#E0E0E0
 }
 
 /* Modo escuro */
@@ -28,6 +29,7 @@ body.dark-theme {
   --footer-bg: #1a1a1a;
   --dropdown-bg: #222;
   --dropdown-border: #333;
+  --h1-container:#1e1e1e;
 }
 
 * {
@@ -52,7 +54,7 @@ body {
 }
 
 /* ===========================
-   TOPO
+   TOPO (Top Bar)
 =========================== */
 .top-bar {
   background-color: var(--primary);
@@ -91,112 +93,41 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-}
-
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
 .logo img {
   width: 6rem;
   height: 6rem;
-}
-
-.logo h1 {
-  margin-top: 0.3rem;
-  font-size: 1.75rem;
-  color: var(--accent);
+  object-fit: contain;
 }
 
 .logo p {
   font-size: 0.875rem;
   color: var(--text-muted);
-}
-/* Barra de pesquisa - modo escuro */
-body.dark-theme .search-bar {
-  background: #1e1e1e; /* fundo da barra */
-  box-shadow: 0 0 0 2px #f7882f; /* mantém a borda laranja */
-}
-
-body.dark-theme .search-bar input {
-  color: #f1f1f1; /* texto claro */
-}
-
-body.dark-theme .search-bar input::placeholder {
-  color: #888; /* placeholder mais discreto */
-}
-
-body.dark-theme .search-bar button {
-  background: #f7882f; /* botão ainda laranja */
-}
-
-body.dark-theme .search-bar button:hover {
-  background: #d96c1f;
-}
-
-.cadastro{
-    background-color: var(--primary);
-  color: #fff;
-  padding: 0.625rem 1.25rem;
-  border-radius: 4px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background var(--transition), transform var(--transition);
-  border: none;
-  cursor: pointer;
-  display: inline-block;
+  margin-top: 0.3rem;
   text-align: center;
 }
+
+/* Botão Cadastrar */
+.cadastro {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .cadastro:hover {
   background-color: var(--accent);
   transform: scale(1.05);
-}
-.cadastro{
-
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.nome-cadastrar{
-  text-decoration: none;
-  color:#fff
-  
-  
-  
-}
-
-.btn,
-.nome-denunciar {
-  background-color: var(--primary);
-  color: #fff;
-  padding: 0.625rem 1.25rem;
-  border-radius: 4px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background var(--transition), transform var(--transition);
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-}
-
-.btn:hover,
-.nome-denunciar:hover {
-  background-color: var(--accent);
-  transform: scale(1.05);
-}
-
-.nome-denunciar {
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* ===========================
@@ -215,6 +146,7 @@ body.dark-theme .search-bar button:hover {
   list-style: none;
   gap: 1.25rem;
   flex-wrap: wrap;
+  
 }
 
 .nav-menu a {
@@ -248,10 +180,15 @@ body.dark-theme .search-bar button:hover {
   top: 100%;
   left: 0;
   background-color: var(--dropdown-bg);
-  min-width: 10rem;
+  min-width: 12rem;
   border: 1px solid var(--dropdown-border);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: background-color var(--transition), border-color var(--transition);
+  list-style: none;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  margin: 0;
 }
 
 .dropdown-menu a {
@@ -269,20 +206,53 @@ body.dark-theme .search-bar button:hover {
   display: block;
 }
 
-.social-icons {
-  display: flex;
-  gap: 1rem;
-  margin-left: auto;
+/* ===========================
+   CONTEÚDO PRINCIPAL
+=========================== */
+.h1-container {
+  background-color: var(--h1-container);
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.social-icons a {
+.titulo h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #d96c1f;
+  font-size: 25px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.element-text {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #627384;
+  font-size: 20px;
+}
+
+.element-text h3 {
+  margin: 1.5rem 0 1rem;
   color: var(--text-color);
-  font-size: 1.125rem;
-  transition: color var(--transition);
 }
 
-.social-icons a:hover {
-  color: var(--accent);
+.element-text p,
+.element-text ul {
+  margin-bottom: 1rem;
+}
+
+.element-text ul {
+  padding-left: 1.5rem;
+}
+
+.element-text li {
+  margin-bottom: 0.5rem;
+}
+
+.element-text strong {
+  color: var(--text-color);
 }
 
 /* ===========================
@@ -325,10 +295,14 @@ body.dark-theme .search-bar button:hover {
   color: var(--text-muted);
 }
 
+.footer-social {
+  margin-top: 1rem;
+}
+
 .footer-social a {
   color: var(--text-muted);
   font-size: 1.75rem;
-
+  margin: 0 0.5rem;
   transition: color var(--transition), transform var(--transition);
 }
 
@@ -338,7 +312,7 @@ body.dark-theme .search-bar button:hover {
 }
 
 /* ===========================
-   BOTÃO MODO DARK
+   BOTÃO MODO ESCURO (DARK MODE TOGGLE)
 =========================== */
 .theme-toggle {
   position: fixed;
@@ -371,8 +345,13 @@ body.dark-theme .theme-toggle {
 .theme-icon {
   font-size: 1.5rem;
 }
-.cadastro{
-    background-color: var(--primary);
+
+/* ===========================
+   UTILITÁRIOS (Botões genéricos - mantidos por compatibilidade)
+=========================== */
+.btn,
+.nome-denunciar {
+  background-color: var(--primary);
   color: #fff;
   padding: 0.625rem 1.25rem;
   border-radius: 4px;
@@ -384,45 +363,21 @@ body.dark-theme .theme-toggle {
   display: inline-block;
   text-align: center;
 }
-.cadastro:hover {
+
+.btn:hover,
+.nome-denunciar:hover {
   background-color: var(--accent);
   transform: scale(1.05);
 }
-.cadastro{
 
+.nome-denunciar {
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.nome-cadastrar{
+.nome-cadastrar {
   text-decoration: none;
-  color:#fff  
-}
-
-.titulo{
-  font-family: Arial, Helvetica, sans-serif;
-  color:#d96c1f;
-  margin: 0 auto;
-  font-size: 25px;
-  line-height: 1.3;
-
-}
-
-.h1-container {
-  background-color: #f7f5f3; /* cor do fundo */
-  width: 100%; /* ocupa toda a tela */
-  padding: 60px 20px; /* altura da faixa */
-  text-align: center;
-}
-
-.element-text{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #627384;
-    font-size: 20px;
-
+  color: #fff;
 }
